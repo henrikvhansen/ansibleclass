@@ -1,6 +1,6 @@
 ---
 - hosts: linuxservers
-  become: yes
+  become: true
 
   vars:
       package:
@@ -19,7 +19,7 @@
     ansible.builtin.systemd:
       name: httpd
       state: started
-      enabled: yes
+      enabled: true
     register: httpd_status
 
   - name: Show Status
@@ -35,7 +35,7 @@
     ansible.posix.firewalld:
       zone: public
       service: http
-      permanent: yes
+      permanent: true
       state: enabled
     notify: firewall reload
 
